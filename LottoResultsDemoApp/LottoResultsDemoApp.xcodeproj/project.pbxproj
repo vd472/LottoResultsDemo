@@ -6,7 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0568AC652E8CC86700548D9F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0568AC642E8CC86700548D9F /* WidgetKit.framework */; };
+		0568AC672E8CC86700548D9F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0568AC662E8CC86700548D9F /* SwiftUI.framework */; };
+		0568AC742E8CC86900548D9F /* LottoResultsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0568AC622E8CC86700548D9F /* LottoResultsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		0568AC722E8CC86900548D9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0590EC6F2E8A9B500043A76A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0568AC612E8CC86700548D9F;
+			remoteInfo = LottoResultsWidgetExtension;
+		};
 		0590EC872E8A9B520043A76A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0590EC6F2E8A9B500043A76A /* Project object */;
@@ -23,13 +36,49 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0568AC792E8CC86900548D9F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0568AC742E8CC86900548D9F /* LottoResultsWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0568AC622E8CC86700548D9F /* LottoResultsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LottoResultsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0568AC642E8CC86700548D9F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0568AC662E8CC86700548D9F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0568AC7B2E8CC88600548D9F /* LottoResultsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LottoResultsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		0590EC772E8A9B500043A76A /* LottoResultsDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottoResultsDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0590EC862E8A9B520043A76A /* LottoResultsDemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoResultsDemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0590EC902E8A9B520043A76A /* LottoResultsDemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LottoResultsDemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0568AC752E8CC86900548D9F /* Exceptions for "LottoResultsWidget" folder in "LottoResultsWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0568AC612E8CC86700548D9F /* LottoResultsWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		0568AC682E8CC86800548D9F /* LottoResultsWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0568AC752E8CC86900548D9F /* Exceptions for "LottoResultsWidget" folder in "LottoResultsWidgetExtension" target */,
+			);
+			path = LottoResultsWidget;
+			sourceTree = "<group>";
+		};
 		0590EC792E8A9B500043A76A /* LottoResultsDemoApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LottoResultsDemoApp;
@@ -48,6 +97,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0568AC5F2E8CC86700548D9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0568AC672E8CC86700548D9F /* SwiftUI.framework in Frameworks */,
+				0568AC652E8CC86700548D9F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0590EC742E8A9B500043A76A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,12 +130,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0568AC632E8CC86700548D9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0568AC642E8CC86700548D9F /* WidgetKit.framework */,
+				0568AC662E8CC86700548D9F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0590EC6E2E8A9B500043A76A = {
 			isa = PBXGroup;
 			children = (
+				0568AC7B2E8CC88600548D9F /* LottoResultsWidgetExtension.entitlements */,
 				0590EC792E8A9B500043A76A /* LottoResultsDemoApp */,
 				0590EC892E8A9B520043A76A /* LottoResultsDemoAppTests */,
 				0590EC932E8A9B520043A76A /* LottoResultsDemoAppUITests */,
+				0568AC682E8CC86800548D9F /* LottoResultsWidget */,
+				0568AC632E8CC86700548D9F /* Frameworks */,
 				0590EC782E8A9B500043A76A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +158,7 @@
 				0590EC772E8A9B500043A76A /* LottoResultsDemoApp.app */,
 				0590EC862E8A9B520043A76A /* LottoResultsDemoAppTests.xctest */,
 				0590EC902E8A9B520043A76A /* LottoResultsDemoAppUITests.xctest */,
+				0568AC622E8CC86700548D9F /* LottoResultsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +166,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0568AC612E8CC86700548D9F /* LottoResultsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0568AC762E8CC86900548D9F /* Build configuration list for PBXNativeTarget "LottoResultsWidgetExtension" */;
+			buildPhases = (
+				0568AC5E2E8CC86700548D9F /* Sources */,
+				0568AC5F2E8CC86700548D9F /* Frameworks */,
+				0568AC602E8CC86700548D9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0568AC682E8CC86800548D9F /* LottoResultsWidget */,
+			);
+			name = LottoResultsWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = LottoResultsWidgetExtension;
+			productReference = 0568AC622E8CC86700548D9F /* LottoResultsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		0590EC762E8A9B500043A76A /* LottoResultsDemoApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0590EC9A2E8A9B520043A76A /* Build configuration list for PBXNativeTarget "LottoResultsDemoApp" */;
@@ -102,10 +195,12 @@
 				0590EC732E8A9B500043A76A /* Sources */,
 				0590EC742E8A9B500043A76A /* Frameworks */,
 				0590EC752E8A9B500043A76A /* Resources */,
+				0568AC792E8CC86900548D9F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0568AC732E8CC86900548D9F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				0590EC792E8A9B500043A76A /* LottoResultsDemoApp */,
@@ -173,6 +268,9 @@
 				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
+					0568AC612E8CC86700548D9F = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
 					0590EC762E8A9B500043A76A = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
@@ -203,11 +301,19 @@
 				0590EC762E8A9B500043A76A /* LottoResultsDemoApp */,
 				0590EC852E8A9B520043A76A /* LottoResultsDemoAppTests */,
 				0590EC8F2E8A9B520043A76A /* LottoResultsDemoAppUITests */,
+				0568AC612E8CC86700548D9F /* LottoResultsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0568AC602E8CC86700548D9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0590EC752E8A9B500043A76A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +338,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0568AC5E2E8CC86700548D9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0590EC732E8A9B500043A76A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +369,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0568AC732E8CC86900548D9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0568AC612E8CC86700548D9F /* LottoResultsWidgetExtension */;
+			targetProxy = 0568AC722E8CC86900548D9F /* PBXContainerItemProxy */;
+		};
 		0590EC882E8A9B520043A76A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0590EC762E8A9B500043A76A /* LottoResultsDemoApp */;
@@ -269,6 +387,68 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0568AC772E8CC86900548D9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LottoResultsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AM38HDB97;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LottoResultsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LottoResultsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vijayesha.LottoResultsDemoApp.LottoResultsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0568AC782E8CC86900548D9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LottoResultsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5AM38HDB97;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LottoResultsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LottoResultsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vijayesha.LottoResultsDemoApp.LottoResultsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		0590EC982E8A9B520043A76A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -395,6 +575,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LottoResultsDemoApp/LottoResultsDemoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5AM38HDB97;
@@ -427,6 +608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LottoResultsDemoApp/LottoResultsDemoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5AM38HDB97;
@@ -541,6 +723,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0568AC762E8CC86900548D9F /* Build configuration list for PBXNativeTarget "LottoResultsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0568AC772E8CC86900548D9F /* Debug */,
+				0568AC782E8CC86900548D9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0590EC722E8A9B500043A76A /* Build configuration list for PBXProject "LottoResultsDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
