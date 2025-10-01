@@ -1,6 +1,8 @@
 # LottoResultsDemo
 Lightweight application that displays the results of Lotto played in Germany 
 
+Since every lottery is added as a comma separated value in the baseURL to get the results, the app is designed accordingly.
+
 Technical Requirements: 
 - Xcode 26.0.1
 
@@ -8,7 +10,7 @@ This project demonstrates a scalable iOS application built with a strong emphasi
 
 By separating concerns into distinct layers (Presentation, Domain, and Data), the codebase achieves:
 Maintainability – clear boundaries and contracts
-Scalability – easily adaptable to new features or external dependencies
+Scalability – easily adaptable to new features or external dependencies.
 Reusability – components designed to be modular and replaceable
 
 
