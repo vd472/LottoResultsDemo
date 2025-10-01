@@ -64,54 +64,19 @@ struct ContentView: View {
     }
     
     private var listState: some View {
-        List(viewModel.lotteries, id: \.lottery) { data in
-            let itemVM = LotteryItemViewModel(lotteryData: data)
-            HStack(spacing: 12) {
-                Image(systemName: itemVM.icon)
-                    .foregroundColor(.blue)
-                    .frame(width: 30)
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(itemVM.displayName)
-                        .font(.headline)
-                    if !data.lastDrawNumbers.isEmpty {
-                        Text("Numbers: \(data.lastDrawNumbers.map(String.init).joined(separator: ", "))")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    if itemVM.hasSuperNumber, let superNum = data.superNumber {
-                        Text("Super: \(superNum)")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                    }
-                    if itemVM.hasEuroNumbers, let euros = data.euroNumbers {
-                        Text("Euro: \(euros.map(String.init).joined(separator: ", "))")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                    }
-                    VStack(spacing: 8) {
-                        Text("Last: \(itemVM.formattedLastDrawDate)")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                        Text("Next: \(itemVM.formattedNextDrawDate) • \(itemVM.timeUntilNextDraw)")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                    }
-                }
-                Spacer()
-                if let jackpot = itemVM.jackpotAmount {
-                    Text(jackpot)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(viewModel.lotteries, id: \.lottery) { data in
+                    LotteryCardView(lotteryData: data, size: .medium)
+                        .swipeActions(edge: .trailing) {
+                            Button("Refresh") {
+                                Task { await viewModel.refreshSingleLottery(data.lottery) }
+                            }.tint(.blue)
+                        }
                 }
             }
-            .contentShape(Rectangle())
-            .swipeActions(edge: .trailing) {
-                Button("Refresh") {
-                    Task { await viewModel.refreshSingleLottery(data.lottery) }
-                }.tint(.blue)
-            }
+            .padding(.vertical, 16)
         }
         .refreshable { await viewModel.refreshData() }
     }
 }
-
