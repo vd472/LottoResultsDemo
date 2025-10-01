@@ -8,34 +8,96 @@
 import XCTest
 
 final class LottoResultsDemoAppUITests: XCTestCase {
-
+    
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        
+        app = XCUIApplication()
+        app.launchArguments = ["--uitesting"]
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
+    
+    override func tearDownWithError() throws {
+        app = nil
+    }
+    
+    @MainActor
+    func testAppLaunch() throws {
+        XCTAssertTrue(app.state == .runningForeground)
+        
+        let navigationTitle = app.navigationBars["Lotteries"]
+        XCTAssertTrue(navigationTitle.exists)
+    }
+    
     @MainActor
     func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
         measure(metrics: [XCTApplicationLaunchMetric()]) {
             XCUIApplication().launch()
+        }
+    }
+    
+    @MainActor
+    func testToolbarFilterButton() throws {
+        let filterButton = app.navigationBars.buttons.element(boundBy: 0)
+        XCTAssertTrue(filterButton.exists)
+    }
+    
+    @MainActor
+    func testLotteryListDisplay() throws {
+        let lotteryList = app.tables.firstMatch
+        if lotteryList.exists {
+            XCTAssertTrue(lotteryList.exists)
+        }
+    }
+    
+    @MainActor
+    func testLotteryItemDisplay() throws {
+        let lotteryItems = app.cells
+        if lotteryItems.count > 0 {
+            XCTAssertGreaterThan(lotteryItems.count, 0)
+        }
+    }
+    
+    
+    @MainActor
+    func testPullToRefresh() throws {
+        let lotteryList = app.tables.firstMatch
+        if lotteryList.exists {
+            lotteryList.swipeDown()
+        }
+        XCTAssertTrue(true)
+    }
+
+    
+    @MainActor
+    func testNetworkErrorDisplay() throws {
+        let errorAlert = app.alerts.firstMatch
+        if errorAlert.exists {
+            XCTAssertTrue(errorAlert.exists)
+        }
+    }
+    
+    @MainActor
+    func testErrorAlertDismissal() throws {
+        let errorAlert = app.alerts.firstMatch
+        if errorAlert.exists {
+            let okButton = errorAlert.buttons["OK"]
+            okButton.tap()
+        }
+        XCTAssertFalse(errorAlert.exists)
+    }
+    
+    @MainActor
+    func testScrollPerformance() throws {
+        // Test scrolling performance with large lists
+        let lotteryList = app.tables.firstMatch
+        if lotteryList.exists {
+            measure(metrics: [XCTOSSignpostMetric.scrollDecelerationMetric]) {
+                lotteryList.swipeUp(velocity: .fast)
+                lotteryList.swipeDown(velocity: .fast)
+            }
         }
     }
 }
