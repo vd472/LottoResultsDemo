@@ -136,9 +136,9 @@ struct LotteryTimelineProvider: TimelineProvider {
         guard let date = lastDrawDate else {
             return "Unknown"
         }
-        
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
+        formatter.locale = Locale(identifier: "de_DE")
+        formatter.dateFormat = "EE., dd.MM.yyyy"
         return formatter.string(from: date)
     }
 }

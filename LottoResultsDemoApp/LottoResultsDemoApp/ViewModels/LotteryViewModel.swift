@@ -8,15 +8,18 @@
 import Foundation
 import Combine
 import SwiftData
+import WidgetKit
 
-
+// MARK: - Lottery View Model
 @MainActor
 class LotteryViewModel: ObservableObject {
+    // Single simple state: the current lotteries to display
     @Published var lotteries: [LotteryData] = []
     @Published var errorMessage: String? = nil
     
     private let repository: LotteryRepositoryProtocol
     private let preferencesManager: UserPreferencesManager
+    private let widgetDataService = WidgetDataService.shared
     private var refreshTimer: Timer?
     
     init(repository: LotteryRepositoryProtocol, preferencesManager: UserPreferencesManager) {
@@ -36,6 +39,7 @@ class LotteryViewModel: ObservableObject {
         refreshTimer?.invalidate()
     }
     
+    // MARK: - Public Methods
     func loadData() async {
         guard preferencesManager.preferences.hasSelectedLotteries else {
             lotteries = []
@@ -44,9 +48,14 @@ class LotteryViewModel: ObservableObject {
         do {
             let selectedIdentifiers = preferencesManager.preferences.selectedLotteryTypes
             lotteries = try await repository.fetchLotteryData(for: selectedIdentifiers)
+            // Update widget data
+            widgetDataService.updateWidgetData(with: lotteries)
         } catch {
+            // On failure, keep existing cached state if available
             do {
                 lotteries = try await repository.getCachedLotteryData(for: preferencesManager.preferences.selectedLotteryTypes)
+                // Update widget data with cached data
+                widgetDataService.updateWidgetData(with: lotteries)
             } catch {
                 lotteries = []
                 errorMessage = (error as? LocalizedError)?.errorDescription ?? "Failed to load data. Please check your connection."
@@ -60,14 +69,21 @@ class LotteryViewModel: ObservableObject {
             let selectedIdentifiers = preferencesManager.preferences.selectedLotteryTypes
             let newData = try await repository.fetchLotteryData(for: selectedIdentifiers)
             lotteries = newData
+            // Update widget data
+            widgetDataService.updateWidgetData(with: lotteries)
         } catch {
+            // keep current lotteries on refresh failure
             if lotteries.isEmpty {
                 errorMessage = (error as? LocalizedError)?.errorDescription ?? "Failed to refresh. Please check your connection."
             }
         }
     }
     
+    func retry() async { await loadData() }
+    
+    // MARK: - Lottery Selection Methods
     func onLotterySelectionChanged() async {
+        // Reload data when user changes lottery selection
         await loadData()
     }
     
@@ -89,6 +105,8 @@ class LotteryViewModel: ObservableObject {
                 } else {
                     lotteries.append(lotteryData)
                 }
+                // Update widget data
+                widgetDataService.updateWidgetData(with: lotteries)
             }
         } catch {
             if lotteries.isEmpty {

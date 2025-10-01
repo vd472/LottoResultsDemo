@@ -17,5 +17,5 @@ struct WidgetLotteryData: Identifiable {
     let euroNumbers: [Int]?
     let jackpotAmount: String?
     let timeUntilNextDraw: String
-    let formattedLastDrawDate: String
+    let formattedLastDrawDate: String?
 }
